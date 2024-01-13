@@ -1,0 +1,37 @@
+{
+  "name": "fivem-typescript-boilerplate",
+  "author": "Overextended",
+  "version": "0.0.0",
+  "license": "",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js --mode=production",
+    "watch": "node build.js"
+  },
+  "keywords": [
+    "fivem"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/overextended/fivem-typescript-boilerplate.git"
+  },
+  "bugs": "https://github.com/overextended/fivem-typescript-boilerplate/issues",
+  "devDependencies": {
+    "@citizenfx/client": "latest",
+    "@citizenfx/server": "latest",
+    "@types/node": "^20.10.6",
+    "esbuild": "^0.19.11",
+    "prettier": "^3.2.1",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@nativewrappers/client": "^1.7.33",
+    "@nativewrappers/fivem-server": "^0.0.20",
+    "@overextended/ox_lib": "^3.14.1"
+  },
+  "engines": {
+    "node": ">=16.9.1"
+  }
+}
+
