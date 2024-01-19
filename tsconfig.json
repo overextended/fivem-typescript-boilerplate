@@ -13,5 +13,5 @@
     "moduleResolution": "bundler",
     "noImplicitThis": true,
     "noUnusedLocals": true,
-  } 
+  },
 }

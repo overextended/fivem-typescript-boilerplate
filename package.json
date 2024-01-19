@@ -20,15 +20,15 @@
   "devDependencies": {
     "@citizenfx/client": "latest",
     "@citizenfx/server": "latest",
-    "@types/node": "^20.10.6",
+    "@types/node": "^20.11.5",
     "esbuild": "^0.19.11",
-    "prettier": "^3.2.1",
+    "prettier": "^3.2.4",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@nativewrappers/client": "^1.7.33",
-    "@nativewrappers/fivem-server": "^0.0.20",
-    "@overextended/ox_lib": "^3.14.1"
+    "@nativewrappers/client": "latest",
+    "@nativewrappers/fivem-server": "latest",
+    "@overextended/ox_lib": "latest"
   },
   "engines": {
     "node": ">=16.9.1"

@@ -1,5 +1,5 @@
 import esbuild from 'esbuild';
-import { readFile, readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 
 /** @type {import('esbuild').BuildOptions} */
 const server = {
@@ -18,6 +18,15 @@ const client = {
 const production = process.argv.includes('--mode=production');
 const buildCmd = production ? esbuild.build : esbuild.context;
 const packageJson = JSON.parse(readFileSync('package.json', { encoding: 'utf8' }));
+
+writeFileSync(
+  '.yarn.installed',
+  new Date().toLocaleString('en-AU', {
+    timeZone: 'UTC',
+    timeStyle: 'long',
+    dateStyle: 'full',
+  })
+);
 
 writeFileSync(
   'fxmanifest.lua',
