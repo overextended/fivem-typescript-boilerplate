@@ -1,5 +1,5 @@
 import esbuild from 'esbuild';
-import { readFileSync, writeFileSync } from 'fs';
+import { readFile, writeFile } from 'fs/promises';
 
 /** @type {import('esbuild').BuildOptions} */
 const server = {
@@ -15,24 +15,8 @@ const client = {
   format: 'iife',
 };
 
-const production = process.argv.includes('--mode=production');
-const buildCmd = production ? esbuild.build : esbuild.context;
-const packageJson = JSON.parse(readFileSync('package.json', { encoding: 'utf8' }));
-
-writeFileSync(
-  '.yarn.installed',
-  new Date().toLocaleString('en-AU', {
-    timeZone: 'UTC',
-    timeStyle: 'long',
-    dateStyle: 'full',
-  })
-);
-
-writeFileSync(
-  'fxmanifest.lua',
-  `fx_version 'cerulean'
-game 'gta5'
-
+const packageJson = JSON.parse(await readFile('package.json', 'utf8'));
+const fxmanifest = `${await readFile('./src/fxmanifest.lua', 'utf8')}
 name '${packageJson.name}'
 author '${packageJson.author}'
 version '${packageJson.version}'
@@ -40,21 +24,20 @@ license '${packageJson.license}'
 repository '${packageJson.repository.url}'
 description '${packageJson.description}'
 
-dependencies {
-    '/server:7290',
-    '/onesync',
-}
-
 client_script 'dist/client.js'
 server_script 'dist/server.js'
+`;
 
-`
-);
+await writeFile('.yarn.installed', new Date().toISOString());
+await writeFile('fxmanifest.lua', fxmanifest);
+
+const production = process.argv.includes('--mode=production');
+const buildCmd = production ? esbuild.build : esbuild.context;
 
 for (const context of ['client', 'server']) {
   buildCmd({
     bundle: true,
-    entryPoints: [`${context}/index.ts`],
+    entryPoints: [`./src/${context}/index.ts`],
     outfile: `dist/${context}.js`,
     keepNames: true,
     dropLabels: production ? ['DEV'] : undefined,
