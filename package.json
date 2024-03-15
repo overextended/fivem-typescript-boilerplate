@@ -7,7 +7,8 @@
   "type": "module",
   "scripts": {
     "build": "node build.js --mode=production",
-    "watch": "node build.js"
+    "watch": "node build.js",
+    "prettier": "prettier ./src/**/*.ts --write"
   },
   "keywords": [
     "fivem"
@@ -20,18 +21,16 @@
   "devDependencies": {
     "@citizenfx/client": "latest",
     "@citizenfx/server": "latest",
-    "@types/node": "^20.11.5",
-    "esbuild": "^0.19.11",
-    "prettier": "^3.2.4",
-    "typescript": "^5.3.3"
+    "@types/node": "^20.11.28",
+    "esbuild": "^0.19.12",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.2"
   },
   "dependencies": {
-    "@nativewrappers/client": "latest",
-    "@nativewrappers/fivem-server": "latest",
+    "@nativewrappers/fivem": "0.0.21",
     "@overextended/ox_lib": "latest"
   },
   "engines": {
     "node": ">=16.9.1"
   }
 }
-
