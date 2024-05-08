@@ -1,5 +1,13 @@
 import esbuild from 'esbuild';
-import { readFile, writeFile } from 'fs/promises';
+import { readFile, writeFile, stat } from 'fs/promises';
+
+// why is this so overly complicated
+async function exists(path) {
+  try {
+    await stat(path);
+    return true;
+  } catch (err) {}
+}
 
 /** @type {import('esbuild').BuildOptions} */
 const server = {
@@ -16,17 +24,29 @@ const client = {
 };
 
 const packageJson = JSON.parse(await readFile('package.json', 'utf8'));
-const fxmanifest = `${await readFile('./src/fxmanifest.lua', 'utf8')}
-name '${packageJson.name}'
+let fxmanifest = `name '${packageJson.name}'
 author '${packageJson.author}'
 version '${packageJson.version}'
-license '${packageJson.license}'
-repository '${packageJson.repository.url}'
 description '${packageJson.description}'
 
-client_script 'dist/client.js'
-server_script 'dist/server.js'
+${await readFile('./src/fxmanifest.lua', 'utf8')}
 `;
+
+const environments = [];
+
+if (await exists('./src/web')) {
+  fxmanifest += `ui_page 'dist/web/index.html'\n`;
+}
+
+if (await exists('./src/client')) {
+  environments.push('client');
+  fxmanifest += `client_script 'dist/client.js'\n`;
+}
+
+if (await exists('./src/server')) {
+  environments.push('server');
+  fxmanifest += `server_script 'dist/server.js'\n`;
+}
 
 await writeFile('.yarn.installed', new Date().toISOString());
 await writeFile('fxmanifest.lua', fxmanifest);
