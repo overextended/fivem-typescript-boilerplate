@@ -6,6 +6,7 @@
   "description": "",
   "type": "module",
   "scripts": {
+    "boilerplate:setup": "pnpm i && cd src/web && pnpm create vite . && cd ../.. && node setup.js",
     "build": "node build.js --mode=production",
     "watch": "node build.js",
     "prettier": "prettier ./src/**/*.ts --write"
