@@ -35,7 +35,14 @@ ${await readFile('./src/fxmanifest.lua', 'utf8')}
 const environments = [];
 
 if (await exists('./src/web')) {
-  fxmanifest += `ui_page 'dist/web/index.html'\n`;
+    fxmanifest += `ui_page 'dist/web/index.html'
+  
+files {
+  "dist/web/index.html",
+  "dist/web/**/*",
+}
+
+`;
 }
 
 if (await exists('./src/client')) {
