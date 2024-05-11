@@ -32,4 +32,25 @@ try {
   console.log('** Something went wrong writing to vite config file.');
 }
 
-// TODO: cut packages from web/package.json and add them to root package.json
+try {
+  const rootPackage = JSON.parse(fs.readFileSync('package.json'));
+  const webPackage = JSON.parse(fs.readFileSync('src/web/package.json'));
+
+  const newPackage = rootPackage;
+  newPackage.dependencies = { ...newPackage.dependencies, ...webPackage.dependencies };
+  newPackage.devDependencies = { ...newPackage.devDependencies, ...webPackage.devDependencies };
+
+  fs.writeFileSync('package.json', JSON.stringify(newPackage, null, 2));
+
+  console.log('** Successfully overriden root package.json');
+} catch (err) {
+  console.log('** There was an error overriding root package.json');
+}
+
+try {
+  fs.unlinkSync('src/web/package.json');
+
+  console.log('** Removed the package.json from web the directory.');
+} catch (err) {
+  console.log('** There was an error removing the package.json from the web directory.');
+}
