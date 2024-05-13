@@ -1,13 +1,6 @@
 import esbuild from 'esbuild';
-import { readFile, writeFile, stat } from 'fs/promises';
-
-// why is this so overly complicated
-async function exists(path) {
-  try {
-    await stat(path);
-    return true;
-  } catch (err) {}
-}
+import { readFile, writeFile } from 'fs/promises';
+import { exists, exec } from './utils.js';
 
 /** @type {import('esbuild').BuildOptions} */
 const server = {

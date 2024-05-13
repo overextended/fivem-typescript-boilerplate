@@ -1,40 +1,10 @@
-import { readFile, writeFile, stat, mkdir, unlink } from 'fs/promises';
-import { spawn } from 'child_process';
-
-/**
- * Check if a filepath is valid.
- * @param path {string}
- */
-async function exists(path) {
-  try {
-    await stat(path);
-    return true;
-  } catch (err) {}
-}
-
-/**
- * Spawn a child process and executes the command asynchronously.
- * @param command {string}
- */
-function exec(command) {
-  return new Promise((resolve, reject) => {
-    const child = spawn(command, { stdio: 'inherit', shell: true });
-
-    child.on('exit', (code, signal) => {
-      if (code === 0) {
-        resolve({ code, signal });
-      } else {
-        reject(new Error(`Command '${command}' exited with code ${code} and signal ${signal}`));
-      }
-    });
-  });
-}
+import { readFile, writeFile, mkdir, unlink } from 'fs/promises';
+import { exists, exec } from './utils.js';
 
 try {
   if (!(await exists('src/web'))) await mkdir('src/web');
 
-  await exec('pnpm i');
-  await exec('cd src/web && pnpm create vite .');
+  await exec('pnpm i && cd src/web && pnpm create vite .');
 
   const viteConfigPath = `src/web/vite.config.ts`;
 
