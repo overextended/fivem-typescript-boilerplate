@@ -6,8 +6,10 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "build": "node build.js --mode=production",
-    "watch": "node build.js",
+    "boilerplate:setup": "node scripts/setup.js",
+    "web:dev": "cd src/web && vite dev",
+    "build": "node scripts/build.js --mode=production",
+    "watch": "node scripts/build.js",
     "prettier": "prettier ./src/**/*.ts --write"
   },
   "keywords": [
@@ -29,8 +31,5 @@
   "dependencies": {
     "@nativewrappers/fivem": "0.0.21",
     "@overextended/ox_lib": "latest"
-  },
-  "engines": {
-    "node": ">=16.9.1"
   }
 }
