@@ -31,8 +31,5 @@
   "dependencies": {
     "@nativewrappers/fivem": "0.0.21",
     "@overextended/ox_lib": "latest"
-  },
-  "engines": {
-    "node": ">=16.9.1"
   }
 }
