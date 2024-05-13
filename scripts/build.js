@@ -1,6 +1,6 @@
 import esbuild from 'esbuild';
-import { readFile, writeFile } from 'fs/promises';
-import { exists, exec } from './utils.js';
+import { readFile, writeFile, readdir } from 'fs/promises';
+import { exists, exec, getFiles } from './utils.js';
 
 /** @type {import('esbuild').BuildOptions} */
 const server = {
@@ -26,8 +26,10 @@ ${await readFile('./src/fxmanifest.lua', 'utf8')}
 `;
 
 const environments = [];
+const production = process.argv.includes('--mode=production');
+const web = await exists('./src/web');
 
-if (await exists('./src/web')) {
+if (web) {
   fxmanifest += `ui_page 'dist/web/index.html'\n`;
 }
 
@@ -41,10 +43,6 @@ if (await exists('./src/server')) {
   fxmanifest += `server_script 'dist/server.js'\n`;
 }
 
-await writeFile('.yarn.installed', new Date().toISOString());
-await writeFile('fxmanifest.lua', fxmanifest);
-
-const production = process.argv.includes('--mode=production');
 const buildCmd = production ? esbuild.build : esbuild.context;
 
 for (const context of ['client', 'server']) {
@@ -77,3 +75,15 @@ for (const context of ['client', 'server']) {
     })
     .catch(() => process.exit(1));
 }
+
+if (web && production) {
+  await exec('cd ./src/web && vite build');
+  const files = await getFiles('dist/web');
+
+  fxmanifest += `
+files {\n\t'${files.join("',\n\t'")}',
+}`;
+}
+
+writeFile('.yarn.installed', new Date().toISOString());
+writeFile('fxmanifest.lua', fxmanifest);
