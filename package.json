@@ -6,10 +6,10 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "boilerplate:setup": "pnpm i && cd src/web && pnpm create vite . && cd ../.. && node setup.js",
+    "boilerplate:setup": "node scripts/setup.js",
     "web:dev": "cd src/web && vite dev",
-    "build": "node build.js --mode=production",
-    "watch": "node build.js",
+    "build": "node scripts/build.js --mode=production",
+    "watch": "node scripts/build.js",
     "prettier": "prettier ./src/**/*.ts --write"
   },
   "keywords": [
