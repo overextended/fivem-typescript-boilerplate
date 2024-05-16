@@ -23,10 +23,10 @@ Initialise your own repository by using one of the options below.
 - Use the **GitHub CLI**.
   - `gh repo create <name> --template=overextended/fivem-typescript-boilerplate`
 
-Navigate to your new directory and execute the following command to install dependencies and choose your web framework.
+Navigate to your new directory and execute the following command to install dependencies.
 
 ```
-pnpm boilerplate:setup
+pnpm install
 ```
 
 ## Development
