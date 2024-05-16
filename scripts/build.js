@@ -81,7 +81,7 @@ if (web && production) {
   const files = await getFiles('dist/web');
 
   fxmanifest += `
-files {\n\t'${files.join("',\n\t'")}',
+files {\n    '${files.join("',\n    '")}',
 }`;
 }
 
