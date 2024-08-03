@@ -34,3 +34,16 @@ pnpm install
 When working on your resource, use `pnpm watch` to rebuild any changes to your `client` and `server` directories.
 
 For web development, use `pnpm web:dev` to use start vite's webserver and watch for changes.
+
+## Layout
+
+- [/dist/](dist)
+  - Compiled project files.
+- [/locales/](locales)
+  - JSON files used for translations with [ox_lib](https://overextended.dev/ox_lib/Modules/Locale/Shared).
+- [/scripts/](scripts)
+  - Scripts used in the development process, but not part of the compiled resource.
+- [/src/](src)
+  - Project source code.
+- [/static/](static)
+  - Files to include with the resource that aren't compiled or loaded (e.g. config).
