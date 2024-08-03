@@ -44,16 +44,14 @@ for (const context of environments) {
     keepNames: true,
     dropLabels: production ? ['DEV'] : undefined,
     legalComments: 'inline',
+    treeShaking: true,
     plugins: production
       ? undefined
       : [
           {
             name: 'rebuild',
             setup(build) {
-              const cb = (result) => {
-                if (!result || result.errors.length === 0) console.log(`Successfully built ${context}`);
-              };
-              build.onEnd(cb);
+              build.onEnd((result) => console.log(`built ${context}.js with ${result.errors.length} errors`));
             },
           },
         ],
@@ -67,7 +65,7 @@ for (const context of environments) {
     .catch(() => process.exit(1));
 }
 
-if (web && production) await exec('cd ./src/web && vite build');
+if (web) await exec(`cd ./src/web && vite ${production ? 'build' : 'build --watch'}`);
 
 const files = await getFiles('dist/web', 'static', 'locales');
 
