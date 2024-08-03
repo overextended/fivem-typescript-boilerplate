@@ -34,18 +34,26 @@ export function exec(command) {
 
 /**
  * Recursively read the files in a directory and return the paths.
- * @param dir {string}
+ * @param args {string[]}
  * @return {Promise<string[]>}
  */
-export async function getFiles(dir) {
-  dir += '/';
-  const dirents = await readdir(dir, { withFileTypes: true });
-  const files = await Promise.all(
-    dirents.map((dirent) => {
-      const path = dir + dirent.name;
-      return dirent.isDirectory() ? getFiles(path) : path;
-    })
-  );
+export async function getFiles(...args) {
+  let files = [];
+
+  for (let index = 0; index < args.length; index++) {
+    let dir = `${args[index]}/`;
+    const dirents = await readdir(dir, { withFileTypes: true });
+
+    files = [
+      ...files,
+      ...(await Promise.all(
+        dirents.map((dirent) => {
+          const path = dir + dirent.name;
+          return dirent.isDirectory() ? getFiles(path) : path;
+        })
+      )),
+    ];
+  }
 
   return files.flat(1);
 }
