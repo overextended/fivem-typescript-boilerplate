@@ -6,10 +6,10 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "web:dev": "cd src/web && vite dev",
+    "web:dev": "cd web && vite dev",
     "build": "node scripts/build.js --mode=production",
     "watch": "node scripts/build.js",
-    "prettier": "prettier ./src/**/*.ts --write"
+    "prettier": "prettier ./{src,web}/**/*.{ts,tsx} --write"
   },
   "keywords": [
     "fivem"

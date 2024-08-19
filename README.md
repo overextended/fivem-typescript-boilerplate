@@ -1,4 +1,4 @@
-# overextended/fivem-typescript-boilerplate
+# fivem-typescript-boilerplate
 
 A boilerplate for creating FiveM resources with TypeScript.
 
@@ -6,9 +6,11 @@ A boilerplate for creating FiveM resources with TypeScript.
 
 ### Node.js v18+
 
-Download and install any LTS release of [Node.js](https://nodejs.org/) from v18.
+Install any LTS release of [`Node.js`](https://nodejs.org/) from v18.
 
 ### pnpm
+
+Install the [`pnpm`](https://pnpm.io/installation) package manager globally.
 
 ```
 npm install -g pnpm
@@ -18,9 +20,9 @@ npm install -g pnpm
 
 Initialise your own repository by using one of the options below.
 
-- Click on the **"Use this template"** button.
+- [Create a new repository](https://github.com/new?template_name=fivem-typescript-boilerplate&template_owner=overextended) using this template.
 - [Download](https://github.com/project-error/fivem-typescript-boilerplate/archive/refs/heads/master.zip) the template directly.
-- Use the **GitHub CLI**.
+- Use the [GitHub CLI](https://cli.github.com/).
   - `gh repo create <name> --template=overextended/fivem-typescript-boilerplate`
 
 Navigate to your new directory and execute the following command to install dependencies.
@@ -31,9 +33,15 @@ pnpm install
 
 ## Development
 
-When working on your resource, use `pnpm watch` to rebuild any changes to your `client` and `server` directories.
+Use `pnpm watch` to actively rebuild modified files while developing the resource.
 
-For web development, use `pnpm web:dev` to use start vite's webserver and watch for changes.
+During web development, use `pnpm web:dev` to start vite's webserver and watch for changes.
+
+## Build
+
+Use `pnpm build` to build all project files in production mode.
+
+To build and create GitHub releases, tag your commit (e.g. `v1.0.0`) and push it.
 
 ## Layout
 

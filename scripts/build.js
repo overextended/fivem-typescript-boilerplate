@@ -26,7 +26,7 @@ ${await readFile('./src/fxmanifest.lua', 'utf8')}\n`;
 
 const environments = [];
 const production = process.argv.includes('--mode=production');
-const web = await exists('./src/web');
+const web = await exists('./web');
 
 if (web) fxmanifest += `ui_page 'dist/web/index.html'\n`;
 if (await exists('./src/client')) environments.push('client');
@@ -65,7 +65,7 @@ for (const context of environments) {
     .catch(() => process.exit(1));
 }
 
-if (web) await exec(`cd ./src/web && vite ${production ? 'build' : 'build --watch'}`);
+if (web) await exec(`cd ./web && vite ${production ? 'build' : 'build --watch'}`);
 
 const files = await getFiles('dist/web', 'static', 'locales');
 

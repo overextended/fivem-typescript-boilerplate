@@ -1,5 +1,3 @@
-export * from '../common';
-
 RegisterCommand(
   'set-visible',
   () => {
