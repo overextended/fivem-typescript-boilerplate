@@ -41,18 +41,20 @@ export async function getFiles(...args) {
   let files = [];
 
   for (let index = 0; index < args.length; index++) {
-    let dir = `${args[index]}/`;
-    const dirents = await readdir(dir, { withFileTypes: true });
+    try {
+      let dir = `${args[index]}/`;
+      const dirents = await readdir(dir, { withFileTypes: true });
 
-    files = [
-      ...files,
-      ...(await Promise.all(
-        dirents.map((dirent) => {
-          const path = dir + dirent.name;
-          return dirent.isDirectory() ? getFiles(path) : path;
-        })
-      )),
-    ];
+      files = [
+        ...files,
+        ...(await Promise.all(
+          dirents.map((dirent) => {
+            const path = dir + dirent.name;
+            return dirent.isDirectory() ? getFiles(path) : path;
+          })
+        )),
+      ];
+    } catch (err) {}
   }
 
   return files.flat(1);
