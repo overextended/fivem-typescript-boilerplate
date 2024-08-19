@@ -38,24 +38,24 @@ export function exec(command) {
  * @return {Promise<string[]>}
  */
 export async function getFiles(...args) {
-  let files = [];
-
-  for (let index = 0; index < args.length; index++) {
-    try {
-      let dir = `${args[index]}/`;
-      const dirents = await readdir(dir, { withFileTypes: true });
-
-      files = [
-        ...files,
-        ...(await Promise.all(
-          dirents.map((dirent) => {
-            const path = dir + dirent.name;
-            return dirent.isDirectory() ? getFiles(path) : path;
+  const files = await Promise.all(
+    args.map(async (dir) => {
+      try {
+        const dirents = await readdir(`${dir}/`, { withFileTypes: true });
+        const paths = await Promise.all(
+          dirents.map(async (dirent) => {
+            if (dirent.name === 'server') return [];
+            const path = `${dir}/${dirent.name}`;
+            return dirent.isDirectory() ? await getFiles(path) : path;
           })
-        )),
-      ];
-    } catch (err) {}
-  }
+        );
 
-  return files.flat(1);
+        return paths.flat();
+      } catch (err) {
+        return [];
+      }
+    })
+  );
+
+  return files.flat();
 }
