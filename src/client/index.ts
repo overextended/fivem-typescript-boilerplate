@@ -13,7 +13,7 @@ RegisterCommand(
   false
 );
 
-RegisterNuiCallback('exit', (data: null, cb: (data: any) => void) => {
+RegisterNuiCallback('exit', (data: null, cb: (data: unknown) => void) => {
   SetNuiFocus(false, false);
   cb({});
 });

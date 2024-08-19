@@ -1,9 +1,9 @@
-import { cache } from '@overextended/ox_lib';
+import { cache } from '@overextended/ox_lib/client';
 
 export function LoadFile(path: string) {
-  return LoadResourceFile(cache.resourceName, path);
+  return LoadResourceFile(cache.resource, path);
 }
 
-export function LoadJsonFile(path: string) {
-  return JSON.parse(LoadFile(path));
+export function LoadJsonFile<T = unknown>(path: string): T {
+  return JSON.parse(LoadFile(path)) as T;
 }

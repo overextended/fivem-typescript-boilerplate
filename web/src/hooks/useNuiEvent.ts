@@ -20,7 +20,7 @@ type NuiHandlerSignature<T> = (data: T) => void;
  *
  **/
 
-export const useNuiEvent = <T = any>(action: string, handler: (data: T) => void) => {
+export const useNuiEvent = <T = unknown>(action: string, handler: (data: T) => void) => {
   const savedHandler: MutableRefObject<NuiHandlerSignature<T>> = useRef(noop);
 
   // Make sure we handle for a reactive handler

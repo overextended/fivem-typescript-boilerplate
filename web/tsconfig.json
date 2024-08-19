@@ -10,6 +10,7 @@
     "paths": {
       "@common/*": ["../src/common/*"]
     },
+    "types": ["@types/node", "./nui.d.ts"],
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -25,6 +26,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["./src", "./nui.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

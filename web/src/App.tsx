@@ -13,7 +13,7 @@ function App() {
 
   function handleHideModal() {
     setVisible(false);
-    fetchNui('exit').then();
+    void fetchNui('exit');
   }
 
   return (
