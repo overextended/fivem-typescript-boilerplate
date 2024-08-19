@@ -1,5 +1,7 @@
-import { cache } from '@overextended/ox_lib/shared';
-import { ResourceContext } from 'config';
+import { cache } from '@overextended/ox_lib';
+export * from 'config';
+
+export const ResourceContext = IsDuplicityVersion() ? 'server' : 'client';
 
 console.info = (...args: any[]) => console.log(`^3${args.join('\t')}^0`);
 
