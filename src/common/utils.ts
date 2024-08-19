@@ -1,4 +1,4 @@
-import { cache } from '@overextended/ox_lib/client';
+import { cache } from '@overextended/ox_lib';
 
 export function LoadFile(path: string) {
   return LoadResourceFile(cache.resource, path);

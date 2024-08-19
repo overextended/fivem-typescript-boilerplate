@@ -1,8 +1,9 @@
-import { cache } from '@overextended/ox_lib';
-export * from 'config';
+import Locale from 'locale';
+import ResourceContext from 'resourceContext';
 
-export const ResourceContext = IsDuplicityVersion() ? 'server' : 'client';
+export function Greetings() {
+  const greetings = Locale('hello');
 
-console.info = (...args: unknown[]) => console.log(`^3${args.join('\t')}^0`);
-
-DEV: console.info(`Resource ${cache.resource}/dist/${ResourceContext}.js is running in development mode!`);
+  console.log(`started dist/${ResourceContext}.js`);
+  console.log(greetings);
+}
