@@ -1,4 +1,4 @@
-import { stat, readdir } from 'fs/promises';
+import { stat, readdir, readFile } from 'fs/promises';
 import { spawn } from 'child_process';
 
 /**
@@ -44,7 +44,6 @@ export async function getFiles(...args) {
         const dirents = await readdir(`${dir}/`, { withFileTypes: true });
         const paths = await Promise.all(
           dirents.map(async (dirent) => {
-            if (dirent.name === 'server') return [];
             const path = `${dir}/${dirent.name}`;
             return dirent.isDirectory() ? await getFiles(path) : path;
           })
@@ -58,4 +57,8 @@ export async function getFiles(...args) {
   );
 
   return files.flat();
+}
+
+export async function getPackage() {
+  return JSON.parse(await readFile('package.json', 'utf8'));
 }

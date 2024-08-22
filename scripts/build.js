@@ -16,11 +16,11 @@ const client = {
   format: 'iife',
 };
 
-const packageJson = JSON.parse(await readFile('package.json', 'utf8'));
-let fxmanifest = `name '${packageJson.name}'
-author '${packageJson.author}'
-version '${packageJson.version}'
-description '${packageJson.description}'
+const pkg = await getPackage();
+let fxmanifest = `name '${pkg.name}'
+author '${pkg.author}'
+version '${pkg.version}'
+description '${pkg.description}'
 
 ${await readFile('./src/fxmanifest.lua', 'utf8')}\n`;
 
@@ -69,7 +69,7 @@ if (web) await exec(`cd ./web && vite ${production ? 'build' : 'build --watch'}`
 
 const files = await getFiles('dist/web', 'static', 'locales');
 
-fxmanifest += `\nfiles {\n\t'${files.join("',\n\t'")}',\n}`;
+fxmanifest += `\nfiles {\n\t'${files.filter((file) => !file.includes('/server')).join("',\n\t'")}',\n}`;
 
 writeFile('.yarn.installed', new Date().toISOString());
 writeFile('fxmanifest.lua', fxmanifest);
