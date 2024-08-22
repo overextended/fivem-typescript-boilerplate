@@ -11,6 +11,9 @@ importers:
       '@nativewrappers/fivem':
         specifier: latest
         version: 0.0.41
+      '@overextended/fx-utils':
+        specifier: github:overextended/fx-utils
+        version: https://codeload.github.com/overextended/fx-utils/tar.gz/09426d15f8db35a7bf3910c8680cc0da9fb0f5d9
       '@overextended/ox_lib':
         specifier: latest
         version: 3.25.0
@@ -526,6 +529,11 @@ packages:
   '@nodelib/fs.walk@1.2.8':
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
+
+  '@overextended/fx-utils@https://codeload.github.com/overextended/fx-utils/tar.gz/09426d15f8db35a7bf3910c8680cc0da9fb0f5d9':
+    resolution: {tarball: https://codeload.github.com/overextended/fx-utils/tar.gz/09426d15f8db35a7bf3910c8680cc0da9fb0f5d9}
+    version: 0.0.1
+    hasBin: true
 
   '@overextended/ox_lib@3.25.0':
     resolution: {integrity: sha512-8SEGULr8R+voRwthRpGrTKOjLiAR9aqmFmwOke1gRxaLACMKTk7nFxoqGc45uLdXUkippmqBpRdP9L9Ir5nGjg==}
@@ -1650,6 +1658,10 @@ snapshots:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
+
+  '@overextended/fx-utils@https://codeload.github.com/overextended/fx-utils/tar.gz/09426d15f8db35a7bf3910c8680cc0da9fb0f5d9':
+    dependencies:
+      typescript: 5.5.4
 
   '@overextended/ox_lib@3.25.0':
     dependencies:
