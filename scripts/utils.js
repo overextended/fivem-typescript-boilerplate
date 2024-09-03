@@ -1,3 +1,5 @@
+//@ts-check
+
 import { stat, readdir, readFile } from 'fs/promises';
 import { spawn } from 'child_process';
 

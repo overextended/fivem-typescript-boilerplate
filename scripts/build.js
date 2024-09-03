@@ -1,3 +1,5 @@
+//@ts-check
+
 import esbuild from 'esbuild';
 import { readFile, writeFile } from 'fs/promises';
 import { exists, exec, getFiles, getPackage } from './utils.js';
