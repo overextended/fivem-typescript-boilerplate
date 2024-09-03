@@ -1,6 +1,6 @@
 import esbuild from 'esbuild';
 import { readFile, writeFile } from 'fs/promises';
-import { exists, exec, getFiles } from './utils.js';
+import { exists, exec, getFiles, getPackage } from './utils.js';
 
 /** @type {import('esbuild').BuildOptions} */
 const server = {
