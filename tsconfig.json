@@ -10,7 +10,8 @@
     "moduleResolution": "bundler",
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "skipLibCheck": true
   },
   "include": ["./src", "./web"]
 }

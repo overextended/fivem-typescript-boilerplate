@@ -7,8 +7,8 @@
   "type": "module",
   "scripts": {
     "web:dev": "cd web && vite dev",
-    "build": "node scripts/build.js --mode=production",
-    "watch": "node scripts/build.js",
+    "build": "node scripts/build.js",
+    "watch": "node scripts/build.js --watch",
     "prettier": "prettier ./{src,web}/**/*.{ts,tsx} --write",
     "eslint": "eslint ./{src,web}/**/*.{ts,tsx}"
   },
@@ -24,6 +24,7 @@
     "@citizenfx/client": "latest",
     "@citizenfx/server": "latest",
     "@eslint/js": "^9.9.0",
+    "@overextended/fx-utils": "^0.0.4",
     "@types/eslint__js": "^8.42.3",
     "@types/node": "^20.16.1",
     "@types/react": "^18.3.3",
@@ -41,8 +42,8 @@
     "vite": "^5.4.1"
   },
   "dependencies": {
+    "@jgoz/esbuild-plugin-typecheck": "^4.0.1",
     "@nativewrappers/fivem": "latest",
-    "@overextended/fx-utils": "github:overextended/fx-utils",
     "@overextended/ox_lib": "latest",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
