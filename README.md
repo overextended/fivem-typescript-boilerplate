@@ -21,7 +21,7 @@ npm install -g pnpm
 Initialise your own repository by using one of the options below.
 
 - [Create a new repository](https://github.com/new?template_name=fivem-typescript-boilerplate&template_owner=overextended) using this template.
-- [Download](https://github.com/project-error/fivem-typescript-boilerplate/archive/refs/heads/master.zip) the template directly.
+- [Download](https://github.com/overextended/fivem-typescript-boilerplate/archive/refs/heads/main.zip) the template directly.
 - Use the [GitHub CLI](https://cli.github.com/).
   - `gh repo create <name> --template=overextended/fivem-typescript-boilerplate`
 
