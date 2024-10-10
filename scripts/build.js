@@ -5,6 +5,7 @@ import { createBuilder, createFxmanifest } from '@overextended/fx-utils';
 
 const watch = process.argv.includes('--watch');
 const web = await exists('./web');
+const version = process.argv.find(arg => /^v(\d+)\.(\d+)\.(\d+)$/.test(arg)) || 'custom';
 
 createBuilder(
   watch,
@@ -37,6 +38,7 @@ createBuilder(
       files: ['lib/init.lua', 'lib/client/**.lua', 'locales/*.json', 'common/data/*.json', ...files],
       dependencies: ['/server:7290', '/onesync'],
       metadata: {
+        version: version,
         ui_page: 'dist/web/index.html',
       },
     });
