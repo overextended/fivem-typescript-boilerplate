@@ -40,7 +40,9 @@ createBuilder(
         ui_page: 'dist/web/index.html',
       },
     });
+
+    if (web && !watch) await exec("cd ./web && vite build");
   }
 );
 
-if (web) await exec(`cd ./web && vite build ${watch ? '--watch' : ''}`);
+if (web && watch) await exec("cd ./web && vite build --watch");
