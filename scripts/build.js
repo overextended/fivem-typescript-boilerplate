@@ -5,11 +5,17 @@ import { createBuilder, createFxmanifest } from '@overextended/fx-utils';
 
 const watch = process.argv.includes('--watch');
 const web = await exists('./web');
+const dropLabels = ['$BROWSER'];
+
+if (!watch) dropLabels.push('$DEV');
 
 createBuilder(
   watch,
   {
-    dropLabels: !watch ? ['$DEV'] : undefined,
+    keepNames: true,
+    legalComments: 'inline',
+    bundle: true,
+    treeShaking: true,
   },
   [
     {
@@ -18,6 +24,7 @@ createBuilder(
         platform: 'node',
         target: ['node22'],
         format: 'cjs',
+        dropLabels: [...dropLabels, '$CLIENT'],
       },
     },
     {
@@ -26,6 +33,7 @@ createBuilder(
         platform: 'browser',
         target: ['es2021'], 
         format: 'iife',
+        dropLabels: [...dropLabels, '$SERVER'],
       },
     },
   ],

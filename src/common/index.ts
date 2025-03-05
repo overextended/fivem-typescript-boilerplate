@@ -1,5 +1,5 @@
 import Locale from 'locale';
-import ResourceContext from 'resourceContext';
+import { ResourceContext } from './resource';
 
 export function Greetings() {
   const greetings = Locale('hello');

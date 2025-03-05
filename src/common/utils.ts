@@ -1,9 +1,18 @@
-import { cache } from '@overextended/ox_lib';
+import { ResourceName, IsBrowser } from './resource';
 
 export function LoadFile(path: string) {
-  return LoadResourceFile(cache.resource, path);
+  return LoadResourceFile(ResourceName, path);
 }
 
 export function LoadJsonFile<T = unknown>(path: string): T {
-  return JSON.parse(LoadFile(path)) as T;
+  if (!IsBrowser) return JSON.parse(LoadFile(path)) as T;
+
+  const resp = fetch(`/${path}`, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+  });
+
+  return resp.then((response) => response.json()) as T;
 }
