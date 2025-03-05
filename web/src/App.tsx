@@ -19,15 +19,21 @@ function App() {
   return (
     <>
       {visible && (
-        <div className="boilerplate-wrapper">
-          <div className="boilerplate-modal-container">
+        <div className='boilerplate-wrapper'>
+          <div className='boilerplate-modal-container'>
             <h3>Boilerplate Modal</h3>
             <p>Count: {count}</p>
 
             <div>
-              <button onClick={() => setCount((prev) => ++prev)}>Increment</button>
-              <button onClick={() => setCount((prev) => --prev)}>Decrement</button>
-              <button onClick={() => handleHideModal()}>Hide modal</button>
+              <button type='button' onClick={() => setCount((prev) => ++prev)}>
+                Increment
+              </button>
+              <button type='button' onClick={() => setCount((prev) => --prev)}>
+                Decrement
+              </button>
+              <button type='button' onClick={() => handleHideModal()}>
+                Hide modal
+              </button>
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@ import { isEnvBrowser } from './misc';
 export async function fetchNui<T = unknown>(
   eventName: string,
   data?: unknown,
-  mock?: { data: T; delay?: number }
+  mock?: { data: T; delay?: number },
 ): Promise<T> {
   if (isEnvBrowser()) {
     if (!mock) return await new Promise((resolve) => resolve);

@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useRef } from 'react';
+import { type MutableRefObject, useEffect, useRef } from 'react';
 import { noop } from '../utils/misc';
 
 interface NuiMessageData<T = unknown> {

@@ -1,51 +1,43 @@
 {
-  "name": "fivem-typescript-boilerplate",
-  "author": "Overextended",
-  "version": "0.0.0",
-  "license": "",
-  "description": "",
-  "type": "module",
-  "scripts": {
-    "web:dev": "cd web && vite dev",
-    "build": "node scripts/build.js",
-    "watch": "node scripts/build.js --watch",
-    "prettier": "prettier ./{src,web}/**/*.{ts,tsx} --write",
-    "eslint": "eslint ./{src,web}/**/*.{ts,tsx}"
-  },
-  "keywords": [
-    "fivem"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/overextended/fivem-typescript-boilerplate.git"
-  },
-  "bugs": "https://github.com/overextended/fivem-typescript-boilerplate/issues",
-  "devDependencies": {
-    "@citizenfx/client": "latest",
-    "@citizenfx/server": "latest",
-    "@eslint/js": "^9.9.0",
-    "@overextended/fx-utils": "^0.0.4",
-    "@types/eslint__js": "^8.42.3",
-    "@types/node": "^20.16.1",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^8.1.0",
-    "@typescript-eslint/parser": "^8.1.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "esbuild": "^0.23.1",
-    "eslint": "^9.9.0",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.9",
-    "prettier": "^3.3.3",
-    "typescript": "^5.5.4",
-    "typescript-eslint": "^8.1.0",
-    "vite": "^5.4.1"
-  },
-  "dependencies": {
-    "@jgoz/esbuild-plugin-typecheck": "^4.0.1",
-    "@nativewrappers/fivem": "latest",
-    "@overextended/ox_lib": "latest",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  }
+	"name": "fivem-typescript-boilerplate",
+	"author": "Overextended",
+	"version": "0.0.0",
+	"license": "",
+	"description": "",
+	"type": "module",
+	"scripts": {
+		"web:dev": "cd web && vite dev",
+		"build": "node scripts/build.js",
+		"watch": "node scripts/build.js --watch",
+		"format": "pnpm biome format --write",
+		"lint": "pnpm biome lint --write"
+	},
+	"keywords": [
+		"fivem"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/overextended/fivem-typescript-boilerplate.git"
+	},
+	"bugs": "https://github.com/overextended/fivem-typescript-boilerplate/issues",
+	"devDependencies": {
+		"@citizenfx/client": "latest",
+		"@citizenfx/server": "latest",
+		"@jgoz/esbuild-plugin-typecheck": "^4.0.3",
+		"@overextended/fx-utils": "^0.0.4",
+		"@types/node": "^22.13.9",
+		"@types/react": "^18.3.18",
+		"@types/react-dom": "^18.3.5",
+		"@vitejs/plugin-react": "^4.3.4",
+		"esbuild": "^0.25.0",
+		"typescript": "^5.8.2",
+		"vite": "^5.4.14"
+	},
+	"dependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@nativewrappers/fivem": "latest",
+		"@overextended/ox_lib": "latest",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1"
+	}
 }
