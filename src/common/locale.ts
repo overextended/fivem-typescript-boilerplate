@@ -1,11 +1,26 @@
-import { locale, type FlattenObjectKeys } from '@overextended/ox_lib';
+import Config from "@common/config";
+/*
+in config.json
+add locale : "en"
+*/
+let currentLocale = Config.locals;
+let translations: Record< string, any > = require(`../../locales/${currentLocale}.json`);
 
-type RawLocales = FlattenObjectKeys<typeof import('../../locales/en.json')>;
+function Locale(str: string, ...args: any[]): string {
+  let text = translations[str] || str;
+  args.forEach((arg, index) => {
+    text = text.replace(`\${${index + 1}}`, arg);
+  });
+  return text;
+}
 
-function Locale<T extends RawLocales>(str: T, ...args: any[]): string;
-function Locale<T extends string>(str: T, ...args: any[]): string | unknown;
-function Locale<T extends string>(str: T, ...args: any[]) {
-  return locale(str, ...args);
+export function setLocale(lang: string) {
+  currentLocale = lang;
+  translations = require(`../../locales/${lang}.json`);
+}
+
+export function getLocale() {
+  return currentLocale;
 }
 
 export default Locale;
