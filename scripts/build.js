@@ -46,6 +46,7 @@ createBuilder(
       dependencies: ['/server:13068', '/onesync'],
       metadata: {
         ui_page: 'dist/web/index.html',
+        node_version: '22'
       },
     });
 
