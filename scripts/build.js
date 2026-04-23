@@ -1,7 +1,7 @@
 //@ts-check
 
 import { exists, exec, getFiles } from './utils.js';
-import { createBuilder, createFxmanifest } from '@overextended/fx-utils';
+import { createBuilder, createFxmanifest } from '@communityox/fx-utils';
 
 const watch = process.argv.includes('--watch');
 const web = await exists('./web');
@@ -31,7 +31,7 @@ createBuilder(
       name: 'client',
       options: {
         platform: 'browser',
-        target: ['es2021'], 
+        target: ['es2021'],
         format: 'iife',
         dropLabels: [...dropLabels, '$SERVER'],
       },

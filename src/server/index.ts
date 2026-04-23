@@ -1,6 +1,6 @@
 import Config from '@common/config';
 import { Greetings } from '@common/index';
-import { addCommand, cache } from '@overextended/ox_lib/server';
+import { addCommand, cache } from '@communityox/ox_lib/server';
 
 Greetings();
 

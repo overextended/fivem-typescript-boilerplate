@@ -17,14 +17,14 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/overextended/fivem-typescript-boilerplate.git"
+		"url": "https://github.com/communityox/fivem-typescript-boilerplate.git"
 	},
-	"bugs": "https://github.com/overextended/fivem-typescript-boilerplate/issues",
+	"bugs": "https://github.com/communityox/fivem-typescript-boilerplate/issues",
 	"devDependencies": {
 		"@citizenfx/client": "latest",
 		"@citizenfx/server": "latest",
 		"@jgoz/esbuild-plugin-typecheck": "^4.0.3",
-		"@overextended/fx-utils": "^0.0.4",
+		"@communityox/fx-utils": "^0.0.4",
 		"@types/node": "^22.13.9",
 		"@types/react": "^18.3.18",
 		"@types/react-dom": "^18.3.5",
@@ -36,7 +36,7 @@
 	"dependencies": {
 		"@biomejs/biome": "^1.9.4",
 		"@nativewrappers/fivem": "latest",
-		"@overextended/ox_lib": "latest",
+		"@communityox/ox_lib": "latest",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
 	}

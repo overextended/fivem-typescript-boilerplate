@@ -11,12 +11,12 @@ importers:
       '@biomejs/biome':
         specifier: ^1.9.4
         version: 1.9.4
+      '@communityox/ox_lib':
+        specifier: latest
+        version: 3.30.7
       '@nativewrappers/fivem':
         specifier: latest
         version: 0.0.77
-      '@overextended/ox_lib':
-        specifier: latest
-        version: 3.29.0
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -30,12 +30,12 @@ importers:
       '@citizenfx/server':
         specifier: latest
         version: 2.0.13139-1
+      '@communityox/fx-utils':
+        specifier: ^0.0.4
+        version: 0.0.4
       '@jgoz/esbuild-plugin-typecheck':
         specifier: ^4.0.3
         version: 4.0.3(esbuild@0.25.0)(typescript@5.8.2)
-      '@overextended/fx-utils':
-        specifier: ^0.0.4
-        version: 0.0.4
       '@types/node':
         specifier: ^22.13.9
         version: 22.13.9
@@ -201,6 +201,13 @@ packages:
 
   '@citizenfx/server@2.0.13139-1':
     resolution: {integrity: sha512-CJ4DhL5Cnh+W+aGrJzM7PijwqJ2/aWC+JFI69alcqcQRRaRYNXnewfD4L6pAOGtInrOoeVilhUO6FnAHZJQY5A==}
+
+  '@communityox/fx-utils@0.0.4':
+    resolution: {integrity: sha512-/IAlSwykgwt1BPwk0+7bvSvTGDQDiduss/BWqeWdnOz3Bim9sSrNzJoEI0CE8UMyjjs4UTth7xQdYYT2WGgvcA==}
+    hasBin: true
+
+  '@communityox/ox_lib@3.30.7':
+    resolution: {integrity: sha512-Wu0iraPgkAODrIdAsEjGVO3hPJCT74PttyTVyKsjgpRkcpmhao9fYxJ9pHmXWAfv8/dAdXekAu7fhRJXn5WrQw==}
 
   '@esbuild/aix-ppc64@0.21.5':
     resolution: {integrity: sha512-1SDgH6ZSPTlggy1yI6+Dbkiz8xzpHJEVAlF/AM1tHPLsf5STom9rwtjE4hKAF20FfXXNTFqEYXyJNWh1GiZedQ==}
@@ -679,13 +686,6 @@ packages:
   '@nodelib/fs.walk@1.2.8':
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
-
-  '@overextended/fx-utils@0.0.4':
-    resolution: {integrity: sha512-8cv3lO6WbipBhUmMtY9xpYscq73xMrte1okgkMdU5SkadU8z6qeqMsXWSCZz/8rM1cmMXYAYyv6OpiVIzt02iw==}
-    hasBin: true
-
-  '@overextended/ox_lib@3.29.0':
-    resolution: {integrity: sha512-nB0OQn5cwzI3VnmY51bQHQG99TYTRiAinzfITh73EDeSKuCOZ3FyVyrEfO10wiqg9heVKAieC7flC6hj355u+w==}
 
   '@rollup/rollup-android-arm-eabi@4.34.9':
     resolution: {integrity: sha512-qZdlImWXur0CFakn2BJ2znJOdqYZKiedEPEVNTBrpfPjc/YuTGcaYZcdmNFTkUj3DU0ZM/AElcM8Ybww3xVLzA==}
@@ -1275,6 +1275,18 @@ snapshots:
 
   '@citizenfx/server@2.0.13139-1': {}
 
+  '@communityox/fx-utils@0.0.4':
+    dependencies:
+      esbuild: 0.23.1
+      tsc-alias: 1.8.11
+
+  '@communityox/ox_lib@3.30.7':
+    dependencies:
+      '@nativewrappers/client': 1.7.33
+      csstype: 3.1.3
+      fast-printf: 1.6.10
+      typescript: 5.8.2
+
   '@esbuild/aix-ppc64@0.21.5':
     optional: true
 
@@ -1528,18 +1540,6 @@ snapshots:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
-
-  '@overextended/fx-utils@0.0.4':
-    dependencies:
-      esbuild: 0.23.1
-      tsc-alias: 1.8.11
-
-  '@overextended/ox_lib@3.29.0':
-    dependencies:
-      '@nativewrappers/client': 1.7.33
-      csstype: 3.1.3
-      fast-printf: 1.6.10
-      typescript: 5.8.2
 
   '@rollup/rollup-android-arm-eabi@4.34.9':
     optional: true
