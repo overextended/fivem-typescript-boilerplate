@@ -1,6 +1,6 @@
-import Config from '@common/config';
-import { Greetings } from '@common/index';
-import { cache } from '@communityox/ox_lib/client';
+import Config from "@common/config";
+import { Greetings } from "@common/index";
+import { cache } from "@overextended/ox_lib/client";
 
 Greetings();
 
@@ -9,14 +9,14 @@ if (Config.EnableNuiCommand) {
     SetNuiFocus(true, true);
 
     SendNUIMessage({
-      action: 'setVisible',
+      action: "setVisible",
       data: {
         visible: true,
       },
     });
   });
 
-  RegisterNuiCallback('exit', (data: null, cb: (data: unknown) => void) => {
+  RegisterNuiCallback("exit", (data: null, cb: (data: unknown) => void) => {
     SetNuiFocus(false, false);
     cb({});
   });
